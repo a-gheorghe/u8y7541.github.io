@@ -47,6 +47,9 @@ a:hover {
 #nav #gitlinks a:hover {
 	background-color: lightgreen;
 }
+#nav #profilelinks a:hover {
+	background-color: orange;
+}
 #nav #bloglinks a:hover {
 	background-color: lightblue;
 }
