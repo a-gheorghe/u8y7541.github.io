@@ -1,5 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans');
 @import url('http://fonts.googleapis.com/css?family=Droid+Serif');
+
 h1 {
 	font-family: Open Sans;
 	font-size: 50;
@@ -8,6 +9,7 @@ h1 {
 p {
 	font-family: Droid Serif;
 	font-size: 20;
+	word-wrap: break-word;
 }
 a {
 	font-family: Droid Serif;
@@ -42,6 +44,12 @@ a:hover {
 	display: block;
 	padding-bottom: 10px;
 }
+#nav #gitlinks a:hover {
+	background-color: lightgreen;
+}
+#nav #bloglinks a:hover {
+	background-color: lightblue;
+}
 #nav ul {
 	list-style-type: none;
 }
@@ -60,8 +68,9 @@ a:hover {
 	display: block;
 }
 #content {
-	margin-left: 50px;
-	float: left;
+	float: top-left;
+	overflow: hidden;
+	padding-left: 50px;
 }
 @-webkit-keyframes appear {
 	from {padding-bottom: 0px;}
