@@ -51,6 +51,9 @@ a:hover {
 	background-color: orange;
 }
 #nav #bloglinks a:hover {
+	background-color: cornflowerblue;
+}
+#nav #scratchlinks a:hover {
 	background-color: lightblue;
 }
 #nav ul {
