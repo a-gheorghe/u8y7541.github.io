@@ -71,5 +71,5 @@ result = open(resultname + '/' + (filename.split('.')[0] + '.html').split('/')[-
 result.write(defaultBegin + '\n' + text + '\n' + defaultEnd)
 result.close()
 links = open('links.txt', 'a')
-links.write('http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] + ' ' + title + '\n')
+links.write('\n' + 'http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] + ' ' + title)
 links.close()
