@@ -19,7 +19,7 @@ req.send(null);
 if (req.status == 200)
 	a = req.responseText;
 console.log(a);
-a = a.split('\n');
+a = a.split('\n').slice(0, -1);
 result = '';
 for (i in a) {
 	result += '<li><a href = ' + a[i].split(' ')[0] + '>' + a[i].split(' ')[1] + '</a></li>'
