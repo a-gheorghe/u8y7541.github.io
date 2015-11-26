@@ -22,6 +22,6 @@ console.log(a);
 a = a.split('\n')
 result = '';
 for (i in a) {
-	result += '<li><a href = ' + a[i].split(' ')[0] + '>' + a[i].split(' ')[1] + '</a></li>'
+	result += '<li><a href = ' + a[i].split(' ')[0] + '>' + a[i].split(' : ')[1] + '</a></li>'
 }
 document.getElementById('blog').innerHTML = result;

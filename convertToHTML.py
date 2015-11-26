@@ -7,8 +7,9 @@ txt.close()
 defaultBegin = \
 '''<html>
 <head>
-	<title>''' + title + '''</title>
-	<link rel = 'stylesheet' href = '../main.css'>
+	<title>u8y7541's Website</title>
+	<link rel = 'stylesheet' href = 'main.css'>
+	<link rel = 'stylesheet' href = 'prism.css'>
 	
 	<meta http-equiv="cache-control" content="max-age=0" /> <!--Cache control so I'm always updated-->
 	<meta http-equiv="cache-control" content="no-cache" />
@@ -54,7 +55,7 @@ defaultBegin = \
 	<div id = 'content'>'''
 defaultEnd = \
 '''</div>
-	<script src = '../gitquery.js'></script>
+	<script src = 'gitquery.js'></script>
 	<!--Configuring MathJax from the CDN-->
 	<script type="text/x-mathjax-config"> 
 	MathJax.Hub.Config({
@@ -65,11 +66,12 @@ defaultEnd = \
 	});
 	</script>
 	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type = "text/javascript" src = 'prism.js'></script>
 </body>
 </html>'''
 result = open(resultname + '/' + (filename.split('.')[0] + '.html').split('/')[-1], 'w')
 result.write(defaultBegin + '\n' + text + '\n' + defaultEnd)
 result.close()
 links = open('links.txt', 'a')
-links.write('\n' + 'http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] + ' ' + title)
+links.write('\n' + 'http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] + ' : ' + title)
 links.close()
