@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>u8y7541's Website</title>
+	<link rel = 'stylesheet' href = '../main.css'>
+	<link rel = 'stylesheet' href = '../prism.css'>
+	
+	<meta http-equiv="cache-control" content="max-age=0" /> <!--Cache control so I'm always updated-->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+	<a href="https://github.com/u8y7541"> <!--Fork Me On GitHub Ribbon Image-->
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+	</a>
+	<div id = 'nav'>
+		<ul>
+			<li id = 'gitlinks'>
+				<a>Git Repos</a>
+				<ul id = 'git'>
+				</ul>
+			</li>
+			<li id = 'profilelinks'>
+				<a>Accounts</a>
+				<ul id = 'profiles'>
+					<li><a href = 'https://plus.google.com/u/0/+u8y7541TheAwesomePerson/posts'>Google+</a></li>
+					<li><a href = 'https://stackoverflow.com/users/3917838/python-guy'>Stack Overflow</a></li>
+					<li><a href = 'https://github.com/u8y7541'>GitHub</a></li>
+					<li><a href = 'https://scratch.mit.edu/users/u8y7541'>Scratch</a></li>
+				</ul>
+			</li>
+			<li id = 'bloglinks'>
+				<a>Blog Posts (WIP)</a>
+				<ul id = 'blog'>
+				</ul>
+			</li>
+			<li id = 'scratchlinks'>
+				<a>Scratch Projects (WIP)</a>
+				<ul id = 'scratch'>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id = 'content'>
+<h1>Fast Mental Math Averages</h1>
+
+<p>When most people are asked to calculate the average of $\{5, 5, 5, 6, 6, 6, 6\}$ in their head, they start doing the long, arduous process of adding and dividing which we are taught in school. It's standard to compute $\frac{5 + 5 + 5 + 6 + 6 + 6 + 6}{7}$, and it will take a minute to get the answer. This can be annoying sometimes, especially in math competitions where time is very important. Fortunately, there is a better way to calculate averages by mental math.</p>
+
+<p>One way to calculate averages fast is to think that each number is a person. All of the same numbers are put on a team. The two teams play tug of war. In the case above, there would be three people on the $5$ team, pulling the rope their way, and 4 people on the $6$ team.</p>
+
+<p>If we attached a sign to the middle of the line, after the two teams pulled, the position of the sign would be <i>the average.</i> Using intuition, because there are four people on the $6$ team and three people on the $5$ team, the average ("sign") should be $\frac{4}{7}$ of the way between 5 and 6. In our heads, we can clearly see that $\frac{4}{7}$ of the way between 5 and 6 is $\boxed{5\frac{4}{7}}$. If you don't believe me, you can check by calculating the traditional method!
+
+<h2>Compacting into a formula</h2>
+
+<p>This method's nice, but it's easier to express it as a formula. After some work, I got:</p>
+
+<p>$$\frac{ab + cd}{a + c} = \frac{a}{a + c} \times (b - d) + d$$</p>
+
+<p>An example use:</p>
+
+<p>$\begin{align}\frac{2 \times 20 + 3 \times 30}{2 + 3} = \frac{2}{2 + 3} \times (20 - 30) + 30
+= \frac{2}{5} \times -10 + 30
+= -4 + 30
+= \boxed{26}\end{align}$</p>
+
+<p>That formula looks ugly, so don't use it. It's easier just to remember the "tug of war" scenario.</p>
+
+<h2>Other methods</h2>
+
+<p>"But isn't there something <i>more</i> faster?" you say. There is one. And that involves using your brain and intuition.</p>
+
+<p>Suppose you need to find the average of $\{5, 5, 5, 5, 7, 7, 7, 10\}$. We could set out using the formula above twice to get the right answer, or we could use some shortcuts. Three fives and three sevens would average out to $6$. The remaining $5$ would average with $11$, producing $8$. So now we need to find the average of $\{6, 6, 6, 6, 6, 6, 8, 8\}$. Because there are six $6$s and two $8$s, we can reduce it to three $6$s and one $8$. Then it is even easier to solve, and we can do it with the previous method and obtain $6.25$.</p>
+
+<h2>Conclusion</h2>
+<p>In the end, it's just what you find works for you best. Remember, I found all of these out by myself. It seems easy to me, but some people think what I do is too complicated. Have fun beating your friends at math, and wait for the next post!</p>
+</div>
+	<script src = '../gitquery.js'></script>
+	<!--Configuring MathJax from the CDN-->
+	<script type="text/x-mathjax-config"> 
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'] ],
+			processEscapes: true
+		}
+	});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type = "text/javascript" src = '../prism.js'></script>
+</body>
+</html>
