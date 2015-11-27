@@ -1,2 +1,0 @@
-<h1>Test Blog Post</h1>
-<p>This is a test blog post.</p>
