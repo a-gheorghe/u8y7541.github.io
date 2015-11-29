@@ -1,0 +1,149 @@
+<html>
+<head>
+	<title>u8y7541's Website</title>
+	<link rel = 'stylesheet' href = '../main.css'>
+	<link rel = 'stylesheet' href = '../prism.css'>
+	
+	<meta http-equiv="cache-control" content="max-age=0" /> <!--Cache control so I'm always updated-->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+	<a href="https://github.com/u8y7541"> <!--Fork Me On GitHub Ribbon Image-->
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+	</a>
+	<div id = 'nav'>
+		<ul>
+			<li id = 'gitlinks'>
+				<a>Git Repos</a>
+				<ul id = 'git'>
+				</ul>
+			</li>
+			<li id = 'profilelinks'>
+				<a>Accounts</a>
+				<ul id = 'profiles'>
+					<li><a href = 'https://plus.google.com/u/0/+u8y7541TheAwesomePerson/posts'>Google+</a></li>
+					<li><a href = 'https://stackoverflow.com/users/3917838/python-guy'>Stack Overflow</a></li>
+					<li><a href = 'https://github.com/u8y7541'>GitHub</a></li>
+					<li><a href = 'https://scratch.mit.edu/users/u8y7541'>Scratch</a></li>
+				</ul>
+			</li>
+			<li id = 'bloglinks'>
+				<a>Blog Posts (WIP)</a>
+				<ul id = 'blog'>
+				</ul>
+			</li>
+			<li id = 'scratchlinks'>
+				<a>Scratch Projects (WIP)</a>
+				<ul id = 'scratch'>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id = 'content'>
+<h1>Lambda, Recursion, and Memoizing Explained</h1>
+<p>It's absolutely necessary to produce fast, efficient, readable, and short code so others can build on it. Our best tools to reduce code size, increase efficiency, and up readability are using lambdas, recursion and memoizing. In this post, I'll explain what each of these are, using the Python language. Even though the code only applies to Python, these concepts can be used for any programming language which support these features.</p>
+
+<h2>Lambdas</h2>
+<p>You've probably heard this word before and not known what it meant. The easiest way to think of lambdas in programming (there's also something called lambda calculus) is a function that can be defined in one line. For example, suppose we have a function called. <code>foo</code> which takes an argument <code>x</code> and returns <code>5 * x</code>. The usual way to write it would be:</p>
+<pre><code class = 'language-python'>def foo(x):
+	return x
+</code></pre>
+<p>Lambdas allow you to write it in a single line.</p>
+<code class = 'language-python'>foo = lambda x: 5 * x</code>
+<p>Now, there are a few important things to notice about lambda. The part the lambda keyword, <code>x</code>, represents the parameter <code>x</code>. After the colon (:) comes an expression which is evaluated and returned. This is the basic structure of a lambda.</p>
+<p>You can also notice that the code is assigning the variable <code>foo</code> to the lambda, as if the function was an object. In fact, the function <i>is</i> and object! This makes lambdas useful to write short functions which will not be used much, and will be discarded after use.</p>
+
+<h2>Recursion</h2>
+<p>(Note: You can skip this section if you already know what recursion is, as of most computer programmers)</p>
+<p>Recursion is one of the most important concepts in computer science. Recursion is all about <i>thinking backwards.</i> Let me give an explanation.</p>
+<p>An iconic example of recursion is the Fibonacci series. Most computer science courses make students write a program to calculate the $n^th$ Fibonacci number. An answer using loops would be:</p>
+<pre><code class = 'language-python'>def fibonacci(n):
+	old = 0
+	previous = 1
+	new = 1
+	for i in range(n - 3):
+		old = previous
+		previous = new
+		new = old + previous
+	return new
+</code></pre>
+<p>It takes some thinking to come up with this "forwards" algorithm from the "backwards" definition that <code>fibonacci(n) = fibonacci(n - 1) + fibonacci(n - 2)</code>. Recursion is basically keeping the algorithm "backwards," or in other words, <i>calling the function from the function itself.</i> So recursion makes the code easy:</p>
+<pre><code class = 'language-python'>def fibonacci(n):
+	return fibonacci(n - 1) + fibonacci(n - 2)
+</code></pre>
+<p>We know this is going to repeat forever, so we need to add something called a <i>base case.</i> We know <code>fibonacci(0) = 1</code> and <code>fibonacci(1) = 1</code> (counting from 0 as default in computer science). So we add that to our code so the repetition will stop when it reaches <code>fibonacci(0) + fibonacci(1)</code>.</p>
+<pre><code class = 'language-python'>def fibonacci(n):
+	if n < 2:
+		return 1
+	return fibonacci(n - 1) + fibonacci(n - 2)
+</code></pre>
+<p>That's how recursion works! Test this function out, and it will work.</p>
+
+<h2>Memoizing</h2>
+<p>Recursion seems amazing at first, but it's easy to see that it gets inneficient. The same calculation is repeated many times. Look at the diagram of the Fibonacci series below:</p>
+<img src = 'Fibonacci.png'></img>
+<p>After about three rounds, we've already repeated calculations. If we were to calculate the full value of <code>fibonacci(10)</code> using a recursive function, calculations would be repeated many times. Memoizing is saving output values so when they are going to be calculated again, the saved value is returned. This will make our recursive function much more efficient.</p>
+<p>Let's write a simple memoizing decorator: (read <a href = http://www.lorieau.com/methods-and-reference/computers-and-programming/20-python-object-decorators-part-i-function-decorators>this decorator tutorial</a> if you don't know what a decorator is)</p>
+<pre><code class = 'language-python'>class Memoizer:
+	def __init__(self, function):
+		self.func = function
+		self.memoizedict = {}
+	def __call__(self, *args):
+		try:
+			return self.memoizedict[args]
+		except:
+			result = self.func(*args)
+			self.memoizedict[args] = result
+			return result
+</code></pre>
+<p>Now we just attach it to our <code>fibonacci</code> function:</p>
+<pre><code class = 'language-python'>class Memoizer:
+	def __init__(self, function):
+		self.func = function
+		self.memoizedict = {}
+	def __call__(self, *args):
+		try:
+			return self.memoizedict[args]
+		except:
+			result = self.func(*args)
+			self.memoizedict[args] = result
+			return result
+@Memoizer
+def fibonacci(n):
+	if n < 2:
+		return 1
+	return fibonacci(n - 1) + fibonacci(n - 2)</code></pre>
+<p>Good for us, there's a built in memoizer in Python called <code>functools.lru_cache</code>, so we can shorten our code again:</p>
+<pre><code class = 'language-python'>from functools import lru_cache
+@lru_cache
+def fibonacci(n):
+	if n < 2:
+		return 1
+	return fibonacci(n - 1) + fibonacci(n - 2)</code></pre>
+
+<h2>Wrapping it all together</h2>
+<p>In the last part about memoizing, we combined memoizing with our Fibonacci function. Now, we can use lambdas to make the function shorter once more.</p>
+<pre><code class = 'language-python'>from functools import lru_cache
+fibonacci = lru_cache()(lambda n: 1 if n < 2 else fibonacci(n - 1) + fibonacci(n - 2))</code></pre>
+<p>And in the end, it's only two lines, reduced from an original seven lines! This really demonstrates the uses of these tools.</p>
+</div>
+	<script src = '../gitquery.js'></script>
+	<!--Configuring MathJax from the CDN-->
+	<script type="text/x-mathjax-config"> 
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'] ],
+			processEscapes: true
+		}
+	});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type = "text/javascript" src = '../prism.js'></script>
+</body>
+</html>
