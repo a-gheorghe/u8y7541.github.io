@@ -21,7 +21,7 @@ if (req.status == 200)
 console.log(a);
 a = a.split('\n')
 result = '';
-for (i in a) {
+for (i in a.reverse()) {
 	result += '<li><a href = ' + a[i].split(' ')[0] + '>' + a[i].split(' : ')[1] + '</a></li>'
 }
 document.getElementById('blog').innerHTML = result;
