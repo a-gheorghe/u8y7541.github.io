@@ -85,6 +85,12 @@ a:hover {
 	padding-right: 200px;
 	margin-bottom: 300px;
 }
+#floatleft {
+	float: left;
+}
+#floatright {
+	float: right;
+}
 @-webkit-keyframes appear {
 	from {padding-bottom: 0px;}
 	to {padding-bottom: 10px;}
