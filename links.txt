@@ -1,2 +1,3 @@
 http://u8y7541.github.io/blog_posts/fast_averages.html : Fast Mental Math Averages
 http://u8y7541.github.io/blog_posts/lambdas_recursion_memoizing.html : Lambdas, Recursion, and Memoizing Explained
+http://u8y7541.github.io/blog_posts/OOP_Explained.html : OOP Explained
