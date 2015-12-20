@@ -1,7 +1,6 @@
 filename = input('File to HTMLify: ')
 title = input('Title of post: ')
-resultname = input('Output folder: ')
-txt = open(filename)
+txt = open('blog_text/' + filename)
 text = txt.read()
 txt.close()
 defaultBegin = \
@@ -69,7 +68,7 @@ defaultEnd = \
 	<script type = "text/javascript" src = '../prism.js'></script>
 </body>
 </html>'''
-result = open(resultname + '/' + (filename.split('.')[0] + '.html').split('/')[-1], 'w')
+result = open('blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1], 'w')
 result.write(defaultBegin + '\n' + text + '\n' + defaultEnd)
 result.close()
 links = open('links.txt', 'a')
