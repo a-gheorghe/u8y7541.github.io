@@ -18,7 +18,6 @@ req.open('GET', 'http://u8y7541.github.io/links.txt', false)
 req.send(null);
 if (req.status == 200)
 	a = req.responseText;
-console.log(a);
 a = a.split('\n')
 result = '';
 for (i in a.reverse()) {
