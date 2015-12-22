@@ -1,0 +1,4 @@
+<h1>I'm trying out JavaScript!</h1>
+<p>My user on StackOverflow says Python Guy. But, I can't be just a Python Guy forever, because a good programmer knows many languages. I taught myself JavaScript and know it like 25% kinda-sorta-maybe. So now, I want to extend my knowledge. I started off by creating a canvas platformer in JS. It's still WIP, but here's a demo. The source code's <a href = 'https://github.com/u8y7541/canvas-game'>here.</a>
+<p>Oh, and feel free to fork and submit pull requests to fix the glitchy collision detection! I just can't get the right bumper length for each side. And perhaps you could help with the ground sinking so I never see it?</p>
+<p>Yep, shortest post ever.</p>
