@@ -1,5 +1,7 @@
-filename = input('File to HTMLify: ')
-title = input('Title of post: ')
+from sys import argv
+
+filename = argv[1]
+title = argv[2]
 txt = open('blog_text/' + filename)
 
 text = txt.read()
@@ -20,6 +22,10 @@ result = open('blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1],
 result.write(defaultBegin + '\n' + text + '\n' + defaultEnd)
 result.close()
 
+links = open('links.txt', 'r')
+linkList = [i.split(' : ')[0] for i in links.readlines()]
+links.close()
 links = open('links.txt', 'a')
-links.write('\n' + 'http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] + ' : ' + title)
+if 'http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] not in linkList:
+	links.write('\n' + 'http://u8y7541.github.io/blog_posts/' + (filename.split('.')[0] + '.html').split('/')[-1] + ' : ' + title)
 links.close()
