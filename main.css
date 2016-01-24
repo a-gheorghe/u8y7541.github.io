@@ -1,6 +1,10 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans');
 @import url('http://fonts.googleapis.com/css?family=Droid+Serif');
 
+body {
+	background: url('bg-site.png');
+	background-repeat: repeat;
+}
 h1 {
 	font-family: Open Sans;
 	font-size: 50;
