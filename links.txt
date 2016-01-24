@@ -2,3 +2,4 @@ http://u8y7541.github.io/blog_posts/fast_averages.html : Fast Mental Math Averag
 http://u8y7541.github.io/blog_posts/lambdas_recursion_memoizing.html : Lambdas, Recursion, and Memoizing Explained
 http://u8y7541.github.io/blog_posts/OOP_Explained.html : OOP Explained
 http://u8y7541.github.io/blog_posts/canvas_game.html : I'm trying out JavaScript!
+http://u8y7541.github.io/blog_posts/code_crushing.html : Code Crushing

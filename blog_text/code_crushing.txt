@@ -1,0 +1,77 @@
+<h1>Code Crushing</h1>
+<p>"Code crushing" (coined by me :P) is when you take many lines of code and turn it into one complicated, garbled line which consists of only <i>one</i> huge statement. This is extremely useful in PP&CG on StackExchange, and otherwise is nice just for the record of making a one-line program. So let's start with the basics.</p>
+
+<h2>List comprehension and generator expressions</h2>
+<p>List comprehensions and generator expressions are the techniques which shorten your code a lot. What exactly are they? Take a look at this example.</p>
+<pre><code class = "language-python">a = []
+for i in range(5):
+	a.append(i**2 + 7)</code></pre>
+<p>This type of code is pretty repetitive and found in many places. List comprehensions dramatically shorten the code. See below:</p>
+<pre><code class = "language-python">a = [i**2 + 7 for i in range(5)]</code></pre>
+<p>So, the basic syntax for a list comprehension is <code class = "language-python">[expression for loopvar in iterable]</code>. We can easily take advantage of this. And expression doesn't need to contain the loop variable. So we can do things like:</p>
+<pre><code class = "language-python">[print(i) for i in ["Hello", "world!", "Foo", "Bar"]]</code></pre>
+<p>This works because when you call the <code>print()</code> function, it returns <code>None</code>. But you can also compress more complex for loops using list comprehension's if-else-elif syntax. See below:</p>
+<pre><code class = "language-python">for i in range(100):
+	if i % 5 == 2:
+		print(i)
+# that can be compressed to:
+[i for i in range(100) if i % 5 == 2]</code></pre>
+<p>The if always comes after the for statement in the list comprehension. For else and elif, the syntax is (sadly and un-pythonically) slightly different.</p>
+<pre><code class = "language-python">for i in range(100):
+	if i % 5 == 2:
+		print(i)
+	elif i % 3 == 2:
+		print(i + 7)
+	else:
+		print(1)
+# that can be compressed to:
+[print(i) if i % 5 == 2 else print(i + 7) if i % 3 == 2 else print(1) for i in range(100)]</code></pre>
+<p>Ugly, I know. They should have added an elif for list comprehension.</p>
+<p>Well, let's move on to generator expressions. At the most basic level, generator expressions are list comprehensions in (parentheses) instead of [square brackets.]</p>
+<pre><code class = "language-python">a = (i**2 + 7 for i in range(5))</code></pre>
+<p>But they are much more than that. A generator expression is not evaluated until you start iterating over it, which means until you loop through it. However, a list comprehension evaluates <i>right when you define it.</i> With a list comprehension, you can do things like <code class = "language-python">[print(i) if i % 5 == 2 else print(i + 7) if i % 3 == 2 else print(1) for i in range(100)]</code>, but if you try it with a generator expression, nothing will happen until you start looping through it. This makes generator expressions very memory efficient.</p>
+
+<h2><code class = "language-python">exec()</code> and <code class = "language-python">eval()</code></h2>
+<p>Have you ever wondered if there was a function in Python to execute a piece of code? Actually, there is. That's called <code class = "language-python">exec()</code>. <code class = "language-python">exec()</code> at the basic level takes code (in a string) and executes it. But it has two other optional arguments, "globals" and "locals." These are the globals and locals dictionaries used when executing the code. If not specified, they are the the dictionaries in the scope of the <code class = "language-python">exec()</code> call.</p>
+<pre><code class = "language-python">>>> exec('print("Hello World the Hard Way!')
+Hello World the Hard Way!
+>>> exec('print(x, y, z)', {'x':5, 'y':6}, {'z':7}) # The first dictionary is globals, the other is locals
+5 6 7</code></pre>
+<p><code class = "language-python">eval()</code> is the same mechanic as <code class = "language-python">exec()</code>, except it takes an expression, such as "2 + 2" as the input and returns the output, unlike <code class = "language-python">exec()</code> which takes a statement and executes it.
+<pre><code class = "language-python">>>> eval("2 + 2")
+4
+>>> eval("x + y + z", {x:5, y:6}, {'z':7})
+18</code></pre>
+
+<h2>Code crushing time!</h2>
+<p>So that above was the basics. Using these tools, let me demonstrate how you can "crush" code into one or two lines. Let's do a classic&mdash;the Caesar cipher. Below is some code for the caesar cipher:</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	alphabet = 'abcdefghijklmnopqrstuvwxyz'
+	string = list(string)
+	s = string
+	for i in range(len(s)):
+		if s[i].lower() in alphabet:
+			s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]
+	return ''.join(s)</code></pre>
+<p>Let's do the first obvious step: compress the <code class = "language-python">for</code> loop.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	alphabet = 'abcdefghijklmnopqrstuvwxyz'
+	string = list(string)
+	s = string
+	[exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]') for i in range(len(s)) if s[i].lower() in alphabet]
+	return ''.join(s)</code></pre>
+<p>Now we do something a little bit tricky: We put all the definitions before the list comprehension as a single <code class = 'language-python'>exec()</code>. But because of the variable scope problems (which are really complicated), I added some extra to the exec call to stop undefined errors.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string')
+	[exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet]
+	return ''.join(s)</code></pre>
+<p>Now we do something I call "listing." This means putting two <code class = "language-python">exec()</code>s or list comprehensions (or both) into one list. Let me demonstrate.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	[exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string'), [exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet]]
+	return ''.join(s)</code></pre>
+<p>Now, we could do a very clever type of "listing" to merge the <code class = "language-python">return</code> line in with the rest. Let me show it.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	return [exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string'), [exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet], ''.join(s)][2]</code></pre>
+<p>I've used a variety of techniques to compress it into one expression. You know what that means. A lambda is also one expression! So here's a final compressed version:</p>
+<pre><code class = "language-python">lambdaCaesar = lambda string, offset: [exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string'), [exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet], ''.join(s)][2]</code></pre>
+<p>Only one line! I bet you wouldn't believe it if I just told you straight that you could compress the caesar cipher into one line. Have fun codegolfing and wait for the next post!</p>

@@ -1,0 +1,164 @@
+<html>
+<head>
+	<title>u8y7541's Website</title>
+	<link rel = 'stylesheet' href = '../main.css'>
+	<link rel = 'stylesheet' href = '../prism.css'>
+	
+	<meta http-equiv="cache-control" content="max-age=0" /> <!--Cache control so I'm always updated-->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+	<a href="https://github.com/u8y7541"> <!--Fork Me On GitHub Ribbon Image-->
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+	</a>
+	<div id = 'nav'>
+		<ul>
+			<li id = 'gitlinks'>
+				<a>Git Repos</a>
+				<ul id = 'git'>
+				</ul>
+			</li>
+			<li id = 'profilelinks'>
+				<a>Accounts</a>
+				<ul id = 'profiles'>
+					<li><a href = 'https://plus.google.com/u/0/+u8y7541TheAwesomePerson/posts'>Google+</a></li>
+					<li><a href = 'https://stackoverflow.com/users/3917838/python-guy'>Stack Overflow</a></li>
+					<li><a href = 'https://github.com/u8y7541'>GitHub</a></li>
+					<li><a href = 'https://scratch.mit.edu/users/u8y7541'>Scratch</a></li>
+				</ul>
+			</li>
+			<li id = 'bloglinks'>
+				<a>Blog Posts</a>
+				<ul id = 'blog'>
+				</ul>
+			</li>
+			<li id = 'scratchlinks'>
+				<a>Scratch Projects (WIP)</a>
+				<ul id = 'scratch'>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id = 'content'>
+<h1>Code Crushing</h1>
+<p>"Code crushing" (coined by me :P) is when you take many lines of code and turn it into one complicated, garbled line which consists of only <i>one</i> huge statement. This is extremely useful in PP&CG on StackExchange, and otherwise is nice just for the record of making a one-line program. So let's start with the basics.</p>
+
+<h2>List comprehension and generator expressions</h2>
+<p>List comprehensions and generator expressions are the techniques which shorten your code a lot. What exactly are they? Take a look at this example.</p>
+<pre><code class = "language-python">a = []
+for i in range(5):
+	a.append(i**2 + 7)</code></pre>
+<p>This type of code is pretty repetitive and found in many places. List comprehensions dramatically shorten the code. See below:</p>
+<pre><code class = "language-python">a = [i**2 + 7 for i in range(5)]</code></pre>
+<p>So, the basic syntax for a list comprehension is <code class = "language-python">[expression for loopvar in iterable]</code>. We can easily take advantage of this. And expression doesn't need to contain the loop variable. So we can do things like:</p>
+<pre><code class = "language-python">[print(i) for i in ["Hello", "world!", "Foo", "Bar"]]</code></pre>
+<p>This works because when you call the <code>print()</code> function, it returns <code>None</code>. But you can also compress more complex for loops using list comprehension's if-else-elif syntax. See below:</p>
+<pre><code class = "language-python">for i in range(100):
+	if i % 5 == 2:
+		print(i)
+# that can be compressed to:
+[i for i in range(100) if i % 5 == 2]</code></pre>
+<p>The if always comes after the for statement in the list comprehension. For else and elif, the syntax is (sadly and un-pythonically) slightly different.</p>
+<pre><code class = "language-python">for i in range(100):
+	if i % 5 == 2:
+		print(i)
+	elif i % 3 == 2:
+		print(i + 7)
+	else:
+		print(1)
+# that can be compressed to:
+[print(i) if i % 5 == 2 else print(i + 7) if i % 3 == 2 else print(1) for i in range(100)]</code></pre>
+<p>Ugly, I know. They should have added an elif for list comprehension.</p>
+<p>Well, let's move on to generator expressions. At the most basic level, generator expressions are list comprehensions in (parentheses) instead of [square brackets.]</p>
+<pre><code class = "language-python">a = (i**2 + 7 for i in range(5))</code></pre>
+<p>But they are much more than that. A generator expression is not evaluated until you start iterating over it, which means until you loop through it. However, a list comprehension evaluates <i>right when you define it.</i> With a list comprehension, you can do things like <code class = "language-python">[print(i) if i % 5 == 2 else print(i + 7) if i % 3 == 2 else print(1) for i in range(100)]</code>, but if you try it with a generator expression, nothing will happen until you start looping through it. This makes generator expressions very memory efficient.</p>
+
+<h2><code class = "language-python">exec()</code> and <code class = "language-python">eval()</code></h2>
+<p>Have you ever wondered if there was a function in Python to execute a piece of code? Actually, there is. That's called <code class = "language-python">exec()</code>. <code class = "language-python">exec()</code> at the basic level takes code (in a string) and executes it. But it has two other optional arguments, "globals" and "locals." These are the globals and locals dictionaries used when executing the code. If not specified, they are the the dictionaries in the scope of the <code class = "language-python">exec()</code> call.</p>
+<pre><code class = "language-python">>>> exec('print("Hello World the Hard Way!')
+Hello World the Hard Way!
+>>> exec('print(x, y, z)', {'x':5, 'y':6}, {'z':7}) # The first dictionary is globals, the other is locals
+5 6 7</code></pre>
+<p><code class = "language-python">eval()</code> is the same mechanic as <code class = "language-python">exec()</code>, except it takes an expression, such as "2 + 2" as the input and returns the output, unlike <code class = "language-python">exec()</code> which takes a statement and executes it.
+<pre><code class = "language-python">>>> eval("2 + 2")
+4
+>>> eval("x + y + z", {x:5, y:6}, {'z':7})
+18</code></pre>
+
+<h2>Code crushing time!</h2>
+<p>So that above was the basics. Using these tools, let me demonstrate how you can "crush" code into one or two lines. Let's do a classic&mdash;the Caesar cipher. Below is some code for the caesar cipher:</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	alphabet = 'abcdefghijklmnopqrstuvwxyz'
+	string = list(string)
+	s = string
+	for i in range(len(s)):
+		if s[i].lower() in alphabet:
+			s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]
+	return ''.join(s)</code></pre>
+<p>Let's do the first obvious step: compress the <code class = "language-python">for</code> loop.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	alphabet = 'abcdefghijklmnopqrstuvwxyz'
+	string = list(string)
+	s = string
+	[exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]') for i in range(len(s)) if s[i].lower() in alphabet]
+	return ''.join(s)</code></pre>
+<p>Now we do something a little bit tricky: We put all the definitions before the list comprehension as a single <code class = 'language-python'>exec()</code>. But because of the variable scope problems (which are really complicated), I added some extra to the exec call to stop undefined errors.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string')
+	[exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet]
+	return ''.join(s)</code></pre>
+<p>Now we do something I call "listing." This means putting two <code class = "language-python">exec()</code>s or list comprehensions (or both) into one list. Let me demonstrate.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	[exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string'), [exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet]]
+	return ''.join(s)</code></pre>
+<p>Now, we could do a very clever type of "listing" to merge the <code class = "language-python">return</code> line in with the rest. Let me show it.</p>
+<pre><code class = "language-python">def convertCaesar(string, offset):
+	return [exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string'), [exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet], ''.join(s)][2]</code></pre>
+<p>I've used a variety of techniques to compress it into one expression. You know what that means. A lambda is also one expression! So here's a final compressed version:</p>
+<pre><code class = "language-python">lambdaCaesar = lambda string, offset: [exec('global alphabet; alphabet = "abcdefghijklmnopqrstuvwxyz"; string = list(string); global s; s = string'), [exec('s[i] = alphabet[(alphabet.index(s[i]) + offset) % 26]', globals(), {"offset":offset, "i":i}) for i in range(len(s)) if s[i].lower() in alphabet], ''.join(s)][2]</code></pre>
+<p>Only one line! I bet you wouldn't believe it if I just told you straight that you could compress the caesar cipher into one line. Have fun codegolfing and wait for the next post!</p><div id = "comments">
+		<div id="disqus_thread"></div>
+		<script>
+		    /**
+		     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		     */
+		    /*
+		    var disqus_config = function () {
+		        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		    };
+		    */
+		    (function() {  // DON'T EDIT BELOW THIS LINE
+		        var d = document, s = d.createElement('script');
+		        
+		        s.src = 'https://u8y7541.disqus.com/embed.js';
+		        
+		        s.setAttribute('data-timestamp', +new Date());
+		        (d.head || d.body).appendChild(s);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		</div>
+	</div>
+</div>
+	<script src = '../gitquery.js'></script>
+	<!--Configuring MathJax from the CDN-->
+	<script type="text/x-mathjax-config"> 
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'] ],
+			processEscapes: true
+		}
+	});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type = "text/javascript" src = '../prism.js'></script>
+</body>
+</html>
