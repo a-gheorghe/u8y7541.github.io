@@ -1,0 +1,121 @@
+<html>
+<head>
+	<title>u8y7541's Website</title>
+	<link rel = 'stylesheet' href = '../main.css'>
+	<link rel = 'stylesheet' href = '../prism.css'>
+	
+	<meta http-equiv="cache-control" content="max-age=0" /> <!--Cache control so I'm always updated-->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+	<a href="https://github.com/u8y7541"> <!--Fork Me On GitHub Ribbon Image-->
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+	</a>
+	<div id = 'nav'>
+		<ul>
+			<li id = 'gitlinks'>
+				<a>Git Repos</a>
+				<ul id = 'git'>
+				</ul>
+			</li>
+			<li id = 'profilelinks'>
+				<a>Accounts</a>
+				<ul id = 'profiles'>
+					<li><a href = 'https://plus.google.com/u/0/+u8y7541TheAwesomePerson/posts'>Google+</a></li>
+					<li><a href = 'https://stackoverflow.com/users/3917838/python-guy'>Stack Overflow</a></li>
+					<li><a href = 'https://github.com/u8y7541'>GitHub</a></li>
+					<li><a href = 'https://scratch.mit.edu/users/u8y7541'>Scratch</a></li>
+				</ul>
+			</li>
+			<li id = 'bloglinks'>
+				<a>Blog Posts</a>
+				<ul id = 'blog'>
+				</ul>
+			</li>
+			<li id = 'scratchlinks'>
+				<a>Scratch Projects (WIP)</a>
+				<ul id = 'scratch'>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id = 'content'>
+<h1>A mental-math quadratic factorization trick</h1>
+<p>Quadratic equations are like mosquitoes. You need to first memorize the big formula, then plug in $a$, $b$, and $c$ and evaluate it. Wouldn't a nice little mental math trick be much more convenient? Fortunately, I've discovered a convenient rearrangement of the formula which makes it easy to do in your head.</p>
+<p>Let's start with an example;</p>
+<p>$$x^2 + 5x + 6 = 0$$</p>
+<p>This is the method. Take half of the $b$-value first; that's $2.5$ in this case. Write it down, except with opposite sign. Write a plus-or-minus after it.</p>
+<p>$$-2.5\pm$$</p>
+<p>Square that. You get $6.25$. Subtract the $c$ value from the squared value, in this case giving $\frac{1}{4}$. Now, write it under a square root sign, after the other part. Simplify the square root a bit, and you've solved the quadratic!</p>
+<p>$$-2.5\pm\sqrt{\frac{1}{4}} = \boxed{-2.5\pm\frac{1}{2}}$$</p>
+
+<h2>How it works</h2>
+<p>So how does it work? This method hinges on a way to rewrite quadratic equations. $x^2 + 5x + 6 = 0$ can be rewritten as:</p>
+<p>$$x + y = -5 \\ xy = 6$$</p>
+<p>So how do we solve this? With some slight manipulation, you can arrive to the trick I described. The $x$ and $y$ in the first equation can represented as $-2.5 + z$ and $-2.5 - z$, with $z$ as a new variable. We could solve for $z$ to get $x$ and $y$. If we put the other forms of $x$ and $y$ into the second equation, we get:</p>
+<p>$$(-2.5 + z)(-2.5 - z) = 6$$</p>
+<p>Notice that this is the factorization for the difference of squares formula. This means we can rewrite it as:</p>
+<p>$$-2.5^2 - z^2 = 6$$</p>
+<p>Solving this, you get $z^2 = \frac{1}{4}$, meaning $z = \frac{1}{2}$. So $x$ and $y$ are $-2.5 + \frac{1}{2}$ and $-2.5 - \frac{1}{2}$, simplified to $-2.5\pm\frac{1}{2}$. Generalizing this method gets the method I described above.</p>
+<h2>Generalizing for when $a \neq 1$</h2>
+<p>The method above doesn't work when the $a$-value isn't $1$. To get around this, another clever trick can be used. Here's a demonstration.</p>
+<p>$$5x^2 + 30x + 45 = 0 \\
+     \frac{5x^2 + 30x + 45}{5} = \frac{0}{5} \\
+     x^2 + 6x + 9 = 0 \text{ (solve with trick from here on)}$$</p>
+<p>Dividing the equation by the $a$-value won't change anything, so you can do that first, making $a = 1$.</p>
+
+<h2>Rearranging into the quadratic formula</h2>
+<p>Writing the method (assuming $a = 1$) as a formula results in this:</p>
+<p>$$\frac{-b}{2}\pm\sqrt{\bigg{(}\frac{b}{2}\bigg{)}^2 - c}$$</p>
+<p>However, adding the $a$ in you get:</p>
+<p>$$\begin{aligned}\frac{-b}{2a}\pm\sqrt{\bigg{(}\frac{b}{2a}\bigg{)}^2 - \frac{c}{a}} \\ \\
+      = \frac{-b}{2a}\pm\sqrt{\frac{b^2}{4a^2} - \frac{c}{a}} \\ \\
+      = \frac{-b}{2a}\pm\frac{\sqrt{b^2 - 4ac}}{2a} \\ \\
+      = \boxed{\frac{-b\pm\sqrt{b^2 - 4ac}}{2a}}\end{aligned}$$</p>
+<p>As you can see, this is the quadratic formula. And for a few additional thoughts, just remember: formulas are easier to compute if you don't need to keep that many numbers in your head. Try to find rearrangements with less terms in them; rearrangements will help you do math very fast. That's it for this blog post; have fun baffling your friends with how fast you solve quadratic equations!</p><div id = "comments">
+		<div id="disqus_thread"></div>
+		<script>
+		    /**
+		     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		     */
+		    /*
+		    var disqus_config = function () {
+		        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		    };
+		    */
+		    (function() {  // DON'T EDIT BELOW THIS LINE
+		        var d = document, s = d.createElement('script');
+		        
+		        s.src = 'https://u8y7541.disqus.com/embed.js';
+		        
+		        s.setAttribute('data-timestamp', +new Date());
+		        (d.head || d.body).appendChild(s);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		</div>
+	</div>
+</div>
+	<script src = '../gitquery.js'></script>
+	<!--Configuring MathJax from the CDN-->
+	<script type="text/x-mathjax-config"> 
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+			processEscapes: true
+		}
+	});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type = "text/javascript" src = '../prism.js'></script>
+</body>
+</html>

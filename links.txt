@@ -3,3 +3,4 @@ http://u8y7541.github.io/blog_posts/lambdas_recursion_memoizing.html : Lambdas, 
 http://u8y7541.github.io/blog_posts/OOP_Explained.html : OOP Explained
 http://u8y7541.github.io/blog_posts/canvas_game.html : I'm trying out JavaScript!
 http://u8y7541.github.io/blog_posts/code_crushing.html : Code Crushing
+http://u8y7541.github.io/blog_posts/quadratic.html : Mental Quadratic Factorization

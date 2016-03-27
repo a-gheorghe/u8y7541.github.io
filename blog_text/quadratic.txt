@@ -1,0 +1,33 @@
+<h1>A mental-math quadratic factorization trick</h1>
+<p>Quadratic equations are like mosquitoes. You need to first memorize the big formula, then plug in $a$, $b$, and $c$ and evaluate it. Wouldn't a nice little mental math trick be much more convenient? Fortunately, I've discovered a convenient rearrangement of the formula which makes it easy to do in your head.</p>
+<p>Let's start with an example;</p>
+<p>$$x^2 + 5x + 6 = 0$$</p>
+<p>This is the method. Take half of the $b$-value first; that's $2.5$ in this case. Write it down, except with opposite sign. Write a plus-or-minus after it.</p>
+<p>$$-2.5\pm$$</p>
+<p>Square that. You get $6.25$. Subtract the $c$ value from the squared value, in this case giving $\frac{1}{4}$. Now, write it under a square root sign, after the other part. Simplify the square root a bit, and you've solved the quadratic!</p>
+<p>$$-2.5\pm\sqrt{\frac{1}{4}} = \boxed{-2.5\pm\frac{1}{2}}$$</p>
+
+<h2>How it works</h2>
+<p>So how does it work? This method hinges on a way to rewrite quadratic equations. $x^2 + 5x + 6 = 0$ can be rewritten as:</p>
+<p>$$x + y = -5 \\ xy = 6$$</p>
+<p>So how do we solve this? With some slight manipulation, you can arrive to the trick I described. The $x$ and $y$ in the first equation can represented as $-2.5 + z$ and $-2.5 - z$, with $z$ as a new variable. We could solve for $z$ to get $x$ and $y$. If we put the other forms of $x$ and $y$ into the second equation, we get:</p>
+<p>$$(-2.5 + z)(-2.5 - z) = 6$$</p>
+<p>Notice that this is the factorization for the difference of squares formula. This means we can rewrite it as:</p>
+<p>$$-2.5^2 - z^2 = 6$$</p>
+<p>Solving this, you get $z^2 = \frac{1}{4}$, meaning $z = \frac{1}{2}$. So $x$ and $y$ are $-2.5 + \frac{1}{2}$ and $-2.5 - \frac{1}{2}$, simplified to $-2.5\pm\frac{1}{2}$. Generalizing this method gets the method I described above.</p>
+<h2>Generalizing for when $a \neq 1$</h2>
+<p>The method above doesn't work when the $a$-value isn't $1$. To get around this, another clever trick can be used. Here's a demonstration.</p>
+<p>$$5x^2 + 30x + 45 = 0 \\
+     \frac{5x^2 + 30x + 45}{5} = \frac{0}{5} \\
+     x^2 + 6x + 9 = 0 \text{ (solve with trick from here on)}$$</p>
+<p>Dividing the equation by the $a$-value won't change anything, so you can do that first, making $a = 1$.</p>
+
+<h2>Rearranging into the quadratic formula</h2>
+<p>Writing the method (assuming $a = 1$) as a formula results in this:</p>
+<p>$$\frac{-b}{2}\pm\sqrt{\bigg{(}\frac{b}{2}\bigg{)}^2 - c}$$</p>
+<p>However, adding the $a$ in you get:</p>
+<p>$$\begin{aligned}\frac{-b}{2a}\pm\sqrt{\bigg{(}\frac{b}{2a}\bigg{)}^2 - \frac{c}{a}} \\ \\
+      = \frac{-b}{2a}\pm\sqrt{\frac{b^2}{4a^2} - \frac{c}{a}} \\ \\
+      = \frac{-b}{2a}\pm\frac{\sqrt{b^2 - 4ac}}{2a} \\ \\
+      = \boxed{\frac{-b\pm\sqrt{b^2 - 4ac}}{2a}}\end{aligned}$$</p>
+<p>As you can see, this is the quadratic formula. And for a few additional thoughts, just remember: formulas are easier to compute if you don't need to keep that many numbers in your head. Try to find rearrangements with less terms in them; rearrangements will help you do math very fast. That's it for this blog post; have fun baffling your friends with how fast you solve quadratic equations!</p>
