@@ -163,6 +163,7 @@ fibonacci = lru_cache()(lambda n: 1 if n < 2 else fibonacci(n - 1) + fibonacci(n
 	MathJax.Hub.Config({
 		tex2jax: {
 			inlineMath: [ ['$','$'] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
 			processEscapes: true
 		}
 	});
