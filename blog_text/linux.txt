@@ -1,0 +1,4 @@
+<h1>Hello from Linux!</h1>
+<p>I've just installed an Ubuntu virtual machine on my computer. It's great; I can switch between Ubuntu and Windows easily; Ubuntu is running in a "window" on my computer.</p>
+
+<p>It took quite a while to set up! I needed to tinker with the BIOS settings (that was a circus) and configure the right ISO file. I've just finished setting up Git and cloning all my repositories. I decided it would be nice to say hello from Linux.</p>
