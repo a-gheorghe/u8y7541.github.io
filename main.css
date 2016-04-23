@@ -80,6 +80,9 @@ a:hover {
 	-webkit-animation-name: appear;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
+	-moz-animation-name: appear;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-fill-mode: forwards;
 	display: block;
 }
 #content {
@@ -99,6 +102,10 @@ a:hover {
 	float: right;
 }
 @-webkit-keyframes appear {
+	from {padding-bottom: 0px;}
+	to {padding-bottom: 10px;}
+}
+@keyframes appear {
 	from {padding-bottom: 0px;}
 	to {padding-bottom: 10px;}
 }
