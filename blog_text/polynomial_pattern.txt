@@ -1,0 +1,18 @@
+<h1>Polynomial Pattern Predicting</h1>
+<p>We've all seen a question like this before: What is the next number in the sequence?</p>
+<p>$7, 19, 37, 61, ...$</p>
+<p>The usual way to approach this is to guess and check, or <i>try</i> to find a pattern. It usually is a hard process. Wouldn't it be better if there was a systematic way to accomplish this?</p>
+<h2>Derivation</h2>
+<img src = 'Linear.png' id = "floatright"></img>
+<p>How do you derive something like this? Lets start with linear equations.</p>
+<p>It's pretty obvious that the difference between terms in linear equations are the same. Lets try this for higher-degree polynomials, like quadratics. I'll demonstrate with a simple one, $x^2$.</p>
+<p>$4, 9, 16, 25, ...$</p>
+<p>The differences between each of the terms is as follows:</p>
+<p>$3, 5, 7, 9, ...$</p>
+<p>That's a linear equation. Do you see a pattern? Lets try the same thing with $x^3$.</p>
+<p>$7, 19, 37, 61, ...$</p>
+<p>This isn't a linear equation. Let's go another layer down and find the differences between these terms.
+<p>$12, 18, 24, ...$</p>
+<img src = 'PolynomialDifferences.png' id = "floatleft"></img>
+<p>This is a linear equation with a constant addition of $6$. This shows that if we dig long enough, you can get a linear equation. But where is all of this going? How can we predict the next term of a sequence with this information? Because we know that we are adding a constant term at the bottom of the ladder, if we keep adding the numbers together until you get to the top, you'll get the next value. The image might clear it up a bit.</p>
+<p>So there it is. A systematic way to find the next terms in a polynomial. I've written some code to do this, it's right <a href = 'http://github.com/u8y7541/predictor'>here</a>.</p>

@@ -1,0 +1,106 @@
+<html>
+<head>
+	<title>u8y7541's Website</title>
+	<link rel = 'stylesheet' href = '../main.css'>
+	<link rel = 'stylesheet' href = '../prism.css'>
+	
+	<meta http-equiv="cache-control" content="max-age=0" /> <!--Cache control so I'm always updated-->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+	<a href="https://github.com/u8y7541"> <!--Fork Me On GitHub Ribbon Image-->
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+	</a>
+	<div id = 'nav'>
+		<ul>
+			<li id = 'gitlinks'>
+				<a>Git Repos</a>
+				<ul id = 'git'>
+				</ul>
+			</li>
+			<li id = 'profilelinks'>
+				<a>Accounts</a>
+				<ul id = 'profiles'>
+					<li><a href = 'https://plus.google.com/u/0/+u8y7541TheAwesomePerson/posts'>Google+</a></li>
+					<li><a href = 'https://stackoverflow.com/users/3917838/python-guy'>Stack Overflow</a></li>
+					<li><a href = 'https://github.com/u8y7541'>GitHub</a></li>
+					<li><a href = 'https://scratch.mit.edu/users/u8y7541'>Scratch</a></li>
+				</ul>
+			</li>
+			<li id = 'bloglinks'>
+				<a>Blog Posts</a>
+				<ul id = 'blog'>
+				</ul>
+			</li>
+			<li id = 'scratchlinks'>
+				<a>Scratch Projects (WIP)</a>
+				<ul id = 'scratch'>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id = 'content'>
+<h1>Polynomial Pattern Predicting</h1>
+<p>We've all seen a question like this before: What is the next number in the sequence?</p>
+<p>$7, 19, 37, 61, ...$</p>
+<p>The usual way to approach this is to guess and check, or <i>try</i> to find a pattern. It usually is a hard process. Wouldn't it be better if there was a systematic way to accomplish this?</p>
+<h2>Derivation</h2>
+<img src = 'Linear.png' id = "floatright"></img>
+<p>How do you derive something like this? Lets start with linear equations.</p>
+<p>It's pretty obvious that the difference between terms in linear equations are the same. Lets try this for higher-degree polynomials, like quadratics. I'll demonstrate with a simple one, $x^2$.</p>
+<p>$4, 9, 16, 25, ...$</p>
+<p>The differences between each of the terms is as follows:</p>
+<p>$3, 5, 7, 9, ...$</p>
+<p>That's a linear equation. Do you see a pattern? Lets try the same thing with $x^3$.</p>
+<p>$7, 19, 37, 61, ...$</p>
+<p>This isn't a linear equation. Let's go another layer down and find the differences between these terms.
+<p>$12, 18, 24, ...$</p>
+<img src = 'PolynomialDifferences.png' id = "floatleft"></img>
+<p>This is a linear equation with a constant addition of $6$. This shows that if we dig long enough, you can get a linear equation. But where is all of this going? How can we predict the next term of a sequence with this information? Because we know that we are adding a constant term at the bottom of the ladder, if we keep adding the numbers together until you get to the top, you'll get the next value. The image might clear it up a bit.</p>
+<p>So there it is. A systematic way to find the next terms in a polynomial. I've written some code to do this, it's right <a href = 'http://github.com/u8y7541/predictor'>here</a>.</p><div id = "comments">
+		<div id="disqus_thread"></div>
+		<script>
+		    /**
+		     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		     */
+		    /*
+		    var disqus_config = function () {
+		        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		    };
+		    */
+		    (function() {  // DON'T EDIT BELOW THIS LINE
+		        var d = document, s = d.createElement('script');
+		        
+		        s.src = 'https://u8y7541.disqus.com/embed.js';
+		        
+		        s.setAttribute('data-timestamp', +new Date());
+		        (d.head || d.body).appendChild(s);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		</div>
+	</div>
+</div>
+	<script src = '../gitquery.js'></script>
+	<!--Configuring MathJax from the CDN-->
+	<script type="text/x-mathjax-config"> 
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+			processEscapes: true
+		}
+	});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type = "text/javascript" src = '../prism.js'></script>
+</body>
+</html>

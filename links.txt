@@ -5,3 +5,4 @@ http://u8y7541.github.io/blog_posts/canvas_game.html : I'm trying out JavaScript
 http://u8y7541.github.io/blog_posts/code_crushing.html : Code Crushing
 http://u8y7541.github.io/blog_posts/quadratic.html : Mental Quadratic Factorization
 http://u8y7541.github.io/blog_posts/linux.html : Hello from Linux!
+http://u8y7541.github.io/blog_posts/polynomial_pattern.html : Polynomial Pattern Predicting
