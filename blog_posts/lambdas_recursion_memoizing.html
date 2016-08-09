@@ -89,7 +89,7 @@
 <p>Recursion seems amazing at first, but it's easy to see that it gets inneficient. The same calculation is repeated many times. Look at the diagram of the Fibonacci series below:</p>
 <img src = 'Fibonacci.png'></img>
 <p>After about three rounds, we've already repeated calculations. If we were to calculate the full value of <code>fibonacci(10)</code> using a recursive function, calculations would be repeated many times. Memoizing is saving output values so when they are going to be calculated again, the saved value is returned. This will make our recursive function much more efficient.</p>
-<p>Let's write a simple memoizing decorator: (read <a href = http://www.lorieau.com/methods-and-reference/computers-and-programming/20-python-object-decorators-part-i-function-decorators>this decorator tutorial</a> if you don't know what a decorator is)</p>
+<p>Let's write a simple memoizing decorator: (read <a href = http://www.lorieau.com/computers-and-programming/2013/06/19/Python-object-decorators>this decorator tutorial</a> if you don't know what a decorator is)</p>
 <pre><code class = 'language-python'>class Memoizer:
 	def __init__(self, function):
 		self.func = function
